@@ -6,6 +6,7 @@ import NewTodo from "@/views/NewTodo";
 import Users from "@/views/Users";
 import TodoList from "@/views/TodoList";
 import EditTodo from "@/views/EditTodo";
+import SignUp from "@/views/SignUp";
 
 Vue.use(VueRouter)
 
@@ -39,6 +40,11 @@ const routes = [
     path: '/users',
     name: 'users',
     component: Users
+  },
+  {
+    path: '/signUp',
+    name: 'signUp',
+    component: SignUp
   }
 ]
 

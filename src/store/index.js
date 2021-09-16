@@ -6,7 +6,6 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     todo: [],
-    category: [],
     user: [],
     currentUser:''
   },
@@ -35,7 +34,7 @@ export default new Vuex.Store({
           state.todo[m].user = payload.msg.user;
           state.todo[m].title = payload.msg.title;
           state.todo[m].due_date = payload.msg.due_date;
-          state.todo[m].category_id = payload.msg.category_id;
+          state.todo[m].category = payload.msg.category;
           break;
         }
       }
@@ -66,9 +65,6 @@ export default new Vuex.Store({
     },
     set_cUser: function (state, currentUser){
       state.currentUser = currentUser;
-    },
-    set_category: function (state, category) {
-      state.category = category;
     },
   },
 
@@ -174,7 +170,7 @@ export default new Vuex.Store({
       });
     },
     new_user: function({ commit }, user) {
-      fetch('http://localhost:8000/api/users', {
+      fetch('http://localhost:8000/api/adduser', {
         method: 'post',
         headers: {
           'Content-Type': 'application/json'
@@ -209,23 +205,6 @@ export default new Vuex.Store({
         return response.json()
       }).then((jsonData) => {
         commit('set_cUser', jsonData.username)
-      }).catch((error) => {
-        if (typeof error.text === 'function')
-          error.text().then((errorMessage) => {
-            alert(errorMessage);
-          });
-        else
-          alert(error);
-      });
-    },
-    load_category: function ({ commit }) {
-      fetch('http://localhost:8000/api/category', { method: 'get' }).then((response) => {
-        if (!response.ok)
-          throw response;
-
-        return response.json()
-      }).then((jsonData) => {
-        commit('set_category', jsonData)
       }).catch((error) => {
         if (typeof error.text === 'function')
           error.text().then((errorMessage) => {

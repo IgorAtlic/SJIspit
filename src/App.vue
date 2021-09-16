@@ -1,9 +1,6 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/newTodo">New ToDo</router-link> |
-      <router-link to="/users">Users</router-link>
     </div>
     <router-view/>
   </div>
@@ -16,12 +13,11 @@ import { mapActions } from 'vuex';
 export default {
   name: "App",
   methods: {
-    ...mapActions(['load_todo','load_users','load_category'])
+    ...mapActions(['load_todo','load_users'])
   },
   mounted: function() {
     this.load_todo();
     this.load_users();
-    this.load_category();
   },
 
 }

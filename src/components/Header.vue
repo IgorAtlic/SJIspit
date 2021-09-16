@@ -3,7 +3,7 @@
     <h3 v-if="currentUser.length" > {{currentUser}} </h3>
     <b-button v-if="currentUser.length" variant="primary" @click="logOut">Log out</b-button>
     <b-button v-if="currentUser.length" variant="primary" @click="goHome">Todo list</b-button>
-    <b-jumbotron v-else header="ToDo List" :lead="'Num : ' + todo.length">
+    <b-jumbotron v-else header="ToDo List" :lead="'Number of users : ' + user.length">
     </b-jumbotron>
   </div>
 </template>
@@ -16,7 +16,7 @@ import store from '@/store'
 export default {
   name: "Header",
   computed: {
-    ...mapState(['todo','currentUser']),
+    ...mapState(['user','currentUser']),
 
   },
   methods: {

@@ -41,7 +41,7 @@ import router from "@/router";
 export default {
   name: "NewTodo",
   computed: {
-    ...mapState(['category','currentUser']),
+    ...mapState(['currentUser']),
   },
   data() {
     return {
